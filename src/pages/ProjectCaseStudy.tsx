@@ -279,18 +279,32 @@ export default function ProjectCaseStudy() {
 
           {/* Challenges faced */}
           <div style={{ padding: '28px', background: 'rgba(13,13,13,0.85)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '20px', backdropFilter: 'blur(12px)' }}>
-            <h2 className="font-heading" style={{ fontSize: '18px', fontWeight: 700, color: '#00FF88', marginBottom: '12px' }}>
+            <h2 className="font-heading" style={{ fontSize: '18px', fontWeight: 700, color: '#00FF88', marginBottom: '16px' }}>
               Challenges faced
             </h2>
-            <p style={{ color: '#a1a1aa', fontSize: '15px', lineHeight: 1.7 }}>{cs.challengesFaced}</p>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+              {cs.challengesFaced.map((item, i) => (
+                <div key={i} style={{ padding: '16px', background: 'rgba(0,0,0,0.4)', border: '1px solid rgba(255,255,255,0.05)', borderRadius: '12px' }}>
+                  <h4 style={{ color: '#ffffff', fontSize: '15px', fontWeight: 600, marginBottom: '6px' }}>{item.title}</h4>
+                  <p style={{ color: '#a1a1aa', fontSize: '14px', lineHeight: 1.6 }}>{item.description}</p>
+                </div>
+              ))}
+            </div>
           </div>
 
           {/* Lessons learned */}
           <div style={{ padding: '28px', background: 'rgba(13,13,13,0.85)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '20px', backdropFilter: 'blur(12px)' }}>
-            <h2 className="font-heading" style={{ fontSize: '18px', fontWeight: 700, color: '#00FF88', marginBottom: '12px' }}>
+            <h2 className="font-heading" style={{ fontSize: '18px', fontWeight: 700, color: '#00FF88', marginBottom: '16px' }}>
               Lessons learned
             </h2>
-            <p style={{ color: '#a1a1aa', fontSize: '15px', lineHeight: 1.7 }}>{cs.lessonsLearned}</p>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+              {cs.lessonsLearned.map((item, i) => (
+                <div key={i} style={{ display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
+                  <span style={{ color: '#00FF88', fontSize: '16px', marginTop: '1px' }}>▪</span>
+                  <span style={{ color: '#a1a1aa', fontSize: '15px', lineHeight: 1.6 }}>{item}</span>
+                </div>
+              ))}
+            </div>
           </div>
 
           {/* Screenshots Gallery */}

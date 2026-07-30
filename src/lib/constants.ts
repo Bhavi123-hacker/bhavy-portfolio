@@ -255,7 +255,7 @@ export interface CaseStudyData {
     data: string;
     dataFlow?: string;
   };
-  techStack: { name: string; role: string; why: string }[];
+  techStack?: { name: string; role: string; why: string }[];
   mlDetails?: {
     dataset: string;
     preprocessing: string;
@@ -317,6 +317,12 @@ export const PROJECTS: ProjectItem[] = [
       overview: 'Bluestock processes mutual fund data end-to-end — from raw ingestion to risk factor calculation and Power BI decision dashboards.',
       problemStatement: 'Retail and institutional investors lack standardized quantitative visibility into mutual fund downside risk and Modern Portfolio Theory metrics.',
       solution: 'A modular Python ETL pipeline feeding normalized financial metrics into SQLite and rendering executive dashboards in Power BI and Streamlit.',
+      objectives: [
+        'Automate ingestion and cleaning of multi-fund NAV histories',
+        'Calculate MPT metrics (Sharpe Ratio, Alpha, Beta, Treynor)',
+        'Simulate downside risk using Monte Carlo (10k iterations) and VaR/CVaR models',
+        'Deliver a 4-page executive Power BI dashboard for fund comparison',
+      ],
       keyFeatures: [
         'Automated ETL data ingestion & cleaning scripts',
         'Sharpe Ratio, Alpha, Beta, & Treynor risk calculations',
@@ -336,8 +342,19 @@ export const PROJECTS: ProjectItem[] = [
         'Performed portfolio risk analytics using Sharpe Ratio, Alpha, Beta, VaR, CVaR, Monte Carlo simulation and Markowitz Efficient Frontier optimization.',
         'Designed a 4-page interactive Power BI dashboard with KPI cards, risk-return analysis, investor insights, SIP trends and interactive filtering.',
       ],
-      challengesFaced: 'Vectorizing Monte Carlo portfolio simulations over 10,000 iterations without memory bottlenecks.',
-      lessonsLearned: 'Vectorized Matrix operations in NumPy outperform iterative loop loops by over 14x in quantitative finance tasks.',
+      challengesFaced: [
+        {
+          title: 'Memory & Performance in Monte Carlo Simulations',
+          description: 'Vectorizing Monte Carlo portfolio simulations over 10,000 iterations without memory bottlenecks required replacing loops with vectorized NumPy arrays.',
+        },
+      ],
+      results: [
+        '14x speedup in Monte Carlo calculations through NumPy vectorization',
+        '100% automated ingestion pipeline reducing manual data preparation to zero',
+      ],
+      lessonsLearned: [
+        'Vectorized Matrix operations in NumPy outperform iterative loop loops by over 14x in quantitative finance tasks.',
+      ],
       futureImprovements: [
         'Live ticker integration with NSE/BSE stock exchanges',
         'LSTM-based predictive NAV forecasting',
@@ -368,6 +385,11 @@ export const PROJECTS: ProjectItem[] = [
       overview: 'Nifty 100 Financial Intelligence screens, categorizes, and evaluates India\'s top 100 companies using fundamental ratio analysis and ML clustering.',
       problemStatement: 'Sifting through multi-year balance sheets, P&L reports, and valuation metrics across 100 companies is time-consuming for equity research.',
       solution: 'An automated machine learning screening engine that clusters stocks into Value, Growth, and High-Risk tiers with instant DuPont ratio breakdowns.',
+      objectives: [
+        'Parse multi-year financial statements across Nifty 100 companies',
+        'Decompose Return on Equity via 3-stage DuPont Analysis',
+        'Cluster companies using Unsupervised K-Means Machine Learning',
+      ],
       keyFeatures: [
         'Automated fundamental balance sheet & P&L parser',
         'K-Means Clustering stock classification (K=4)',
@@ -386,8 +408,18 @@ export const PROJECTS: ProjectItem[] = [
         'Applies machine learning to surface investment insights from fundamental data.',
         'Interactive stock classification and sector valuation benchmarks.',
       ],
-      challengesFaced: 'Handling distinct ratio baselines across heterogeneous sectors like Banking vs IT.',
-      lessonsLearned: 'Sector-wise percentile normalization is critical before feeding ratios to clustering algorithms.',
+      challengesFaced: [
+        {
+          title: 'Cross-Sector Ratio Variance',
+          description: 'Handling distinct ratio baselines across heterogeneous sectors like Banking vs IT required sector-specific z-score normalization.',
+        },
+      ],
+      results: [
+        'Automated valuation screening for 100 companies in under 3 seconds',
+      ],
+      lessonsLearned: [
+        'Sector-wise percentile normalization is critical before feeding ratios to clustering algorithms.',
+      ],
       futureImprovements: [
         'Earnings call sentiment analysis via NLP Transformers',
         'Automated daily alert webhooks for valuation shifts',
@@ -418,6 +450,10 @@ export const PROJECTS: ProjectItem[] = [
       overview: 'Restaurant Analytics ML Suite leverages XGBoost and Random Forest models to forecast restaurant ratings, footfall, and revenue drivers.',
       problemStatement: 'Restaurant operators struggle with dynamic pricing, menu profitability, and predicting customer churn due to unstructured review data.',
       solution: 'A machine learning analytics platform evaluating customer feedback, price tiers, and location coordinates to output actionable business recommendations.',
+      objectives: [
+        'Predict restaurant ratings with high regression accuracy',
+        'Map geographic demand & cuisine popularity hotspots',
+      ],
       keyFeatures: [
         'Restaurant Rating Prediction (R² = 0.89)',
         'Customer Footfall & Demand Forecasting',
@@ -436,8 +472,18 @@ export const PROJECTS: ProjectItem[] = [
         'Feature engineering on restaurant dataset exceeding 10,000 records.',
         'SHAP values integration for business model interpretability.',
       ],
-      challengesFaced: 'Encoding high-cardinality location features without introducing dimension sparsity.',
-      lessonsLearned: 'Frequency and Target Encoding preserve predictive signals better than one-hot encoding for high-cardinality spatial features.',
+      challengesFaced: [
+        {
+          title: 'High-Cardinality Spatial Features',
+          description: 'Encoding high-cardinality location features without introducing dimension sparsity required target and frequency encoding.',
+        },
+      ],
+      results: [
+        'Achieved R² score of 0.89 on rating prediction tasks',
+      ],
+      lessonsLearned: [
+        'Frequency and Target Encoding preserve predictive signals better than one-hot encoding for high-cardinality spatial features.',
+      ],
       futureImprovements: [
         'Computer vision integration for dish presentation quality scoring',
         'Real-time POS sales API connection',
@@ -468,6 +514,10 @@ export const PROJECTS: ProjectItem[] = [
       overview: 'TruthLens AI is an NLP pipeline and machine learning web application built to combat online misinformation by predicting article authenticity in real-time.',
       problemStatement: 'The rapid spread of unverified news online poses significant challenges for digital information integrity.',
       solution: 'An automated machine learning text classifier utilizing TF-IDF n-grams to detect subtle linguistic indicators of fake news.',
+      objectives: [
+        'Build a real-time text preprocessing and TF-IDF vectorization engine',
+        'Train and evaluate benchmark classifiers',
+      ],
       keyFeatures: [
         'TF-IDF text vectorization with n-gram feature extraction',
         '93% accuracy on benchmark news datasets',
@@ -485,8 +535,18 @@ export const PROJECTS: ProjectItem[] = [
         'Trained and evaluated Logistic Regression and Naive Bayes models.',
         'Interactive Streamlit interface for real-time article verification.',
       ],
-      challengesFaced: 'Mitigating overfitting on dataset-specific political keyword biases.',
-      lessonsLearned: 'Strict lemmatization and L2 regularization prevent models from memorizing specific entity names.',
+      challengesFaced: [
+        {
+          title: 'Dataset Specific Political Bias',
+          description: 'Mitigating overfitting on dataset-specific political keyword biases required aggressive stop-word pruning and lemmatization.',
+        },
+      ],
+      results: [
+        '93% overall accuracy on unseen benchmark test sets',
+      ],
+      lessonsLearned: [
+        'Strict lemmatization and L2 regularization prevent models from memorizing specific entity names.',
+      ],
       futureImprovements: [
         'Fine-tuning BERT Transformer models for contextual news analysis',
         'Browser extension for instant web browsing verification',
@@ -517,6 +577,10 @@ export const PROJECTS: ProjectItem[] = [
       overview: 'FoodShare coordinates surplus food logistics end-to-end — from a donor listing a surplus batch to a volunteer completing the delivery.',
       problemStatement: 'Edible surplus food is wasted because donors, NGOs and volunteers have no shared, real-time coordination layer.',
       solution: 'A role-aware Node/Express application over MySQL where each actor gets a purpose-built dashboard and every donation has a tracked lifecycle.',
+      objectives: [
+        'Build multi-role authentication with JWT',
+        'Design automated state transitions for food donation lifecycles',
+      ],
       keyFeatures: [
         'Donor, NGO, volunteer and admin roles',
         'JWT authentication with role-based access control',
@@ -534,8 +598,18 @@ export const PROJECTS: ProjectItem[] = [
         'Built a full-stack platform connecting food donors, NGOs, volunteers and administrators to streamline food donation and redistribution.',
         'Implemented JWT authentication, role-based access control, REST APIs and SQL-backed analytics dashboards.',
       ],
-      challengesFaced: 'Modeling a donation lifecycle with four different actors cleanly without route pollution.',
-      lessonsLearned: 'Access control is a schema and middleware decision before it is a UI decision.',
+      challengesFaced: [
+        {
+          title: 'Multi-Role Lifecycle State Transitions',
+          description: 'Modeling a donation lifecycle with four different actors cleanly without route pollution required state machine validation logic in custom middleware.',
+        },
+      ],
+      results: [
+        'Successfully routed surplus meals with zero state collisions in concurrent testing',
+      ],
+      lessonsLearned: [
+        'Access control is a schema and middleware decision before it is a UI decision.',
+      ],
       futureImprovements: [
         'Live map tracking for volunteers',
         'Mobile app client for field pickup teams',
@@ -566,6 +640,10 @@ export const PROJECTS: ProjectItem[] = [
       overview: 'Movie4U is a content-based film recommendation system calculating TF-IDF text similarity matrices across 5,000+ titles.',
       problemStatement: 'Users spend excessive time browsing catalogs without finding films that match their specific narrative or director preferences.',
       solution: 'A vector similarity recommendation engine mapping genres, keywords, cast, and directors into a high-dimensional feature space.',
+      objectives: [
+        'Vectorize combined metadata tags using TF-IDF',
+        'Compute pairwise Cosine Similarity matrix across 5,000 films',
+      ],
       keyFeatures: [
         'Cosine similarity calculation across multi-feature TF-IDF matrices',
         'Live movie poster & rating lookup via TMDB API',
@@ -583,8 +661,18 @@ export const PROJECTS: ProjectItem[] = [
         'TF-IDF vectorization on movie metadata.',
         'Real-time movie poster fetching via TMDB API integration.',
       ],
-      challengesFaced: 'Precomputing and storing large similarity matrices efficiently.',
-      lessonsLearned: 'Compressing precomputed NumPy matrices with Pickle cuts cold-start loading time down to milliseconds.',
+      challengesFaced: [
+        {
+          title: 'Similarity Matrix Memory Storage',
+          description: 'Precomputing and storing large similarity matrices efficiently required compressed binary serialization.',
+        },
+      ],
+      results: [
+        'Instantaneous sub-100ms recommendation calculations',
+      ],
+      lessonsLearned: [
+        'Compressing precomputed NumPy matrices with Pickle cuts cold-start loading time down to milliseconds.',
+      ],
       futureImprovements: [
         'Collaborative filtering integration using SVD Matrix Factorization',
         'User preference history saving',
@@ -615,6 +703,10 @@ export const PROJECTS: ProjectItem[] = [
       overview: 'SevaSetu is a coordination backbone for community service: NGOs post events, volunteers sign up, beneficiaries raise requests, admins keep it accountable.',
       problemStatement: 'Community service effort is fragmented across chat groups and spreadsheets, so impact is impossible to track.',
       solution: 'A single role-aware platform with registration, event management and service request tracking, each role getting a tailored dashboard.',
+      objectives: [
+        'Provide centralized coordination for volunteers, NGOs, and beneficiaries',
+        'Implement role-based user management and event signup flows',
+      ],
       keyFeatures: [
         'Volunteer registration and profiles',
         'NGO event creation and management',
@@ -633,8 +725,18 @@ export const PROJECTS: ProjectItem[] = [
         'Enables volunteer registration, event management and service request tracking.',
         'Role-based dashboards for volunteers, NGOs and administrators.',
       ],
-      challengesFaced: 'Balancing three very different user journeys in one product.',
-      lessonsLearned: 'Shipping the smallest useful workflow first keeps scope honest.',
+      challengesFaced: [
+        {
+          title: 'Diverse Persona User Journeys',
+          description: 'Balancing three very different user journeys (volunteers, NGOs, beneficiaries) in one cohesive product required modular UI component architecture.',
+        },
+      ],
+      results: [
+        'Streamlined event creation and volunteer signups into a single dashboard',
+      ],
+      lessonsLearned: [
+        'Shipping the smallest useful workflow first keeps scope honest and architectural boundaries clean.',
+      ],
       futureImprovements: [
         'Impact analytics dashboard',
         'Notification system',

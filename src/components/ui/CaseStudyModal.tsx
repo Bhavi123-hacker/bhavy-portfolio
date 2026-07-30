@@ -207,18 +207,32 @@ export default function CaseStudyModal({ project, onClose }: CaseStudyModalProps
 
             {/* Challenges faced */}
             <div style={{ padding: '24px', background: 'rgba(13,13,13,0.8)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '16px' }}>
-              <h3 className="font-heading" style={{ fontSize: '16px', fontWeight: 700, color: '#00FF88', marginBottom: '10px' }}>
+              <h3 className="font-heading" style={{ fontSize: '16px', fontWeight: 700, color: '#00FF88', marginBottom: '14px' }}>
                 Challenges faced
               </h3>
-              <p style={{ color: '#a1a1aa', fontSize: '14px', lineHeight: 1.7 }}>{cs.challengesFaced}</p>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                {cs.challengesFaced.map((item, i) => (
+                  <div key={i} style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                    <span style={{ color: '#ffffff', fontSize: '14px', fontWeight: 600 }}>{item.title}</span>
+                    <span style={{ color: '#a1a1aa', fontSize: '14px', lineHeight: 1.6 }}>{item.description}</span>
+                  </div>
+                ))}
+              </div>
             </div>
 
             {/* Lessons learned */}
             <div style={{ padding: '24px', background: 'rgba(13,13,13,0.8)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '16px' }}>
-              <h3 className="font-heading" style={{ fontSize: '16px', fontWeight: 700, color: '#00FF88', marginBottom: '10px' }}>
+              <h3 className="font-heading" style={{ fontSize: '16px', fontWeight: 700, color: '#00FF88', marginBottom: '14px' }}>
                 Lessons learned
               </h3>
-              <p style={{ color: '#a1a1aa', fontSize: '14px', lineHeight: 1.7 }}>{cs.lessonsLearned}</p>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                {cs.lessonsLearned.map((item, i) => (
+                  <div key={i} style={{ display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
+                    <span style={{ color: '#00FF88', fontSize: '14px', marginTop: '1px' }}>▪</span>
+                    <span style={{ color: '#a1a1aa', fontSize: '14px', lineHeight: 1.6 }}>{item}</span>
+                  </div>
+                ))}
+              </div>
             </div>
 
             {/* Future improvements */}
